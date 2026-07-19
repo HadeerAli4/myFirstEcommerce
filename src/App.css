@@ -1,0 +1,44 @@
+/* Light mode defaults */
+[data-bs-theme="light"] {
+  --bs-body-bg: #ffffff;
+  --bs-body-color: #212529;
+}
+
+/* Dark mode overrides */
+[data-bs-theme="dark"] {
+  --bs-body-bg: #1a1a2e;
+  --bs-body-color: #e0e0e0;
+}
+
+/* Override Bootstrap's default dark background if needed */
+[data-bs-theme="dark"] .bg-light {
+  background-color: #2d2d44 !important;
+}
+
+[data-bs-theme="dark"] .card {
+  background-color: #252538;
+  border-color: #3a3a52;
+}
+
+[data-bs-theme="dark"] .form-control {
+  background-color: #2d2d44;
+  border-color: #3a3a52;
+  color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] .form-control:focus {
+  background-color: #353550;
+  color: #fff;
+}
+
+/* Your pink sections need adjustment in dark mode */
+[data-bs-theme="dark"] section[style*="pink"],
+[data-bs-theme="dark"] div[style*="pink"] {
+  background-color: #3d2c3d !important;
+  color: #f0d0e0 !important;
+}
+
+/* Ensure text contrast on dark backgrounds */
+[data-bs-theme="dark"] .text-muted {
+  color: #a0a0b0 !important;
+}
