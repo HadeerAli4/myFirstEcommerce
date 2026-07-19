@@ -6,7 +6,7 @@ import Products from "./pages/Products.jsx";
 import ProductDetails from "./pages/ProductDetails.jsx";
 import Cart from "./pages/Cart.jsx";
 import Login from "./pages/Login.jsx";
-import Register from "./pages/Register.jsx";
+import Register from "./pages/register.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import { Footer } from "./components/footer.jsx";
 import { Toaster } from "react-hot-toast";
