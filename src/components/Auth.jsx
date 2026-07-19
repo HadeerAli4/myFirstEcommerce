@@ -2,7 +2,7 @@ import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { clearUser } from "../store/slices/userSlice";
-import Register from "../pages/Register";
+import Register from "../pages/register";
 
 export function Auth(){
 
