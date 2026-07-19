@@ -7,6 +7,8 @@ export default function LatestProducts(){
 
 const [products, setProducts]= useState([]);
 
+
+
 useEffect(function(){
 
     async function fetchProducts() {
