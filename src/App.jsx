@@ -8,7 +8,7 @@ import Cart from "./pages/Cart.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import NotFound from "./pages/NotFound.jsx";
-import { Footer } from "./components/Footer.jsx";
+import { Footer } from "./components/footer.jsx";
 import { Toaster } from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { API, VERIFY_TOKEN_API } from "./api/api.js";
