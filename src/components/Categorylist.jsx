@@ -56,39 +56,43 @@ useEffect(function(){
     }
     fetchCategories();
 },[])
-    return(
 
-        <Swiper  loop={true} modules={[Autoplay]} 
-        autoplay={{
-            delay : 2500,
-            disableOnInteraction: false,
-        }} 
-        breakpoints={{
-            0: {
-                slidesPerView: 2,
-            },
-            768: {
-                slidesPerView: 4,
-            },
-            1200: {
-                slidesPerView : 6,
-            },
-        }}
-        
-        className="mb-3">
-        {categories.map((category,index) => {
-            const Icon = categoryIcons[category.slug];
+return (
+  <Swiper  
+    loop={categories.length > 6} // Prevents Swiper layout glitches if categories are few
+    modules={[Autoplay]} 
+    autoplay={{
+      delay: 2500,
+      disableOnInteraction: false,
+    }} 
+    breakpoints={{
+      0: { slidesPerView: 2, spaceBetween: 10 },
+      576: { slidesPerView: 3, spaceBetween: 15 },
+      768: { slidesPerView: 4, spaceBetween: 20 },
+      1200: { slidesPerView: 6, spaceBetween: 25 },
+    }}
+    className="mb-4 py-2"
+  >
+    {categories.map((category, index) => {
+      // 1. Find icon component or use a fallback shopping bag if it doesn't match perfectly
+      const IconComponent = categoryIcons[category.slug] || FaBagShopping;
 
-            return(
-            <SwiperSlide key={category.name + index}> 
-            <Link to={'#'} 
-            className="d-flex flex-column gap-2 align-items-center"> 
-            <Icon size={30} /> {category.name} 
-            </Link>
-            </SwiperSlide>
-            );
-})}
-        </Swiper>
-    );
+      return (
+        <SwiperSlide key={category.slug || index}> 
+          {/* 2. Route dynamically using query parameters to filter your products page */}
+          <Link 
+            to={`/products?category=${category.slug}`} 
+            className="d-flex flex-column gap-2 align-items-center text-decoration-none text-center category-link-item"
+            style={{ color: "inherit" }}
+          > 
+            <div className="p-3 bg-light rounded-circle d-flex align-items-center justify-content-center shadow-sm icon-wrapper">
+              <IconComponent size={24} className="text-primary" /> 
+            </div>
+            <span className="fw-medium small text-capitalize">{category.name}</span>
+          </Link>
+        </SwiperSlide>
+      );
+    })}
+  </Swiper>
+);
 }
-

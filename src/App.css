@@ -1,16 +1,13 @@
-/* Light mode defaults */
 [data-bs-theme="light"] {
   --bs-body-bg: #ffffff;
   --bs-body-color: #212529;
 }
 
-/* Dark mode overrides */
 [data-bs-theme="dark"] {
   --bs-body-bg: #1a1a2e;
   --bs-body-color: #e0e0e0;
 }
 
-/* Override Bootstrap's default dark background if needed */
 [data-bs-theme="dark"] .bg-light {
   background-color: #2d2d44 !important;
 }
@@ -31,14 +28,27 @@
   color: #fff;
 }
 
-/* Your pink sections need adjustment in dark mode */
 [data-bs-theme="dark"] section[style*="pink"],
 [data-bs-theme="dark"] div[style*="pink"] {
   background-color: #3d2c3d !important;
   color: #f0d0e0 !important;
 }
 
-/* Ensure text contrast on dark backgrounds */
 [data-bs-theme="dark"] .text-muted {
   color: #a0a0b0 !important;
 }
+
+*:focus,
+*:focus-visible,
+*:active,
+.btn:focus,
+.btn:active,
+.form-control:focus,
+.nav-link:focus,
+.carousel-control-prev:focus,
+.carousel-control-next:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: inherit !important; 
+}
+

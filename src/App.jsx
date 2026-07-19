@@ -58,7 +58,7 @@ export default function App() {
       }
     }
     verifyToken();
-  }, []);
+  }, [dispatch]);
 
   if (isLoading) return <Loading />;
 
@@ -69,11 +69,19 @@ export default function App() {
       <div 
         data-bs-theme={isDarkMode ? "dark" : "light"} 
         className="min-vh-100 d-flex flex-column"
-        style={{ backgroundColor: isDarkMode ? "#1a1a2e" : "#ffffff" }} // ✅ Full-width bg
+        style={{ backgroundColor: isDarkMode ? "#1a1a2e" : "#ffffff" }} 
       >
         <AppNavbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+        
+        <main className="flex-grow-1 min-vh-100 p-3 p-md-4">
 
-        <main className="flex-grow-1 min-vh-100 py-4">
+           
+           <div 
+          className="container rounded-4 shadow-sm p-4 p-md-5"
+          style={{ 
+          border: isDarkMode ? "1px solid #33334d" : "1px solid #dee2e6",
+          backgroundColor: isDarkMode ? "#1f1f38" : "#ffffff", 
+          minHeight: "80vh" }}>
 
           <Routes>
             <Route path="/" element={<Home />} />
@@ -88,7 +96,7 @@ export default function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
             
-            
+            </div>
             <Footer />
 
         </main>
