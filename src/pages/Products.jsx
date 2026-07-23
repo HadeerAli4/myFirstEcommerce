@@ -194,6 +194,7 @@ export default function Products() {
                                             <span>{product.rating}</span>
                                             <FaStar className="text-warning" />
                                         </p>
+                                        
                                         <Card.Img 
                                             variant="top" 
                                             src={product.thumbnail} 
@@ -201,7 +202,7 @@ export default function Products() {
                                             onClick={() => navigate(`/product-details/${product.id}`)}
                                         />
                                         <Card.Body className="d-flex flex-column justify-content-between">
-                                            {/* ✅ Fixed: Added backticks and proper spacing */}
+
                                             <Card.Title 
                                                 className="fs-6 text-truncate" 
                                                 style={{ cursor: "pointer" }} 

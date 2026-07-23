@@ -57,25 +57,25 @@ export default function Checkout() {
                     <Col md={6}>
                       <Form.Group>
                         <Form.Label className="small fw-bold text-muted">First Name</Form.Label>
-                        <Form.Control type="text" placeholder="Hadeer" defaultValue="Hadeer" />
+                        <Form.Control type="text" placeholder="First" defaultValue="First name" />
                       </Form.Group>
                     </Col>
                     <Col md={6}>
                       <Form.Group>
                         <Form.Label className="small fw-bold text-muted">Last Name</Form.Label>
-                        <Form.Control type="text" placeholder="Ali" defaultValue="Ali" />
+                        <Form.Control type="text" placeholder="last" defaultValue="last name" />
                       </Form.Group>
                     </Col>
                     <Col md={12}>
                       <Form.Group>
                         <Form.Label className="small fw-bold text-muted">Address</Form.Label>
-                        <Form.Control type="text" placeholder="123 Alexandria Egypt" defaultValue="123 Alexandria Egypt" />
+                        <Form.Control type="text" placeholder="123 Alexandria Egypt" defaultValue="Write your Adress" />
                       </Form.Group>
                     </Col>
                     <Col md={4}>
                       <Form.Group>
                         <Form.Label className="small fw-bold text-muted">City</Form.Label>
-                        <Form.Control type="text" placeholder="city" defaultValue="Egypt" />
+                        <Form.Control type="text" placeholder="city" defaultValue="City" />
                       </Form.Group>
                     </Col>
                     <Col md={4}>

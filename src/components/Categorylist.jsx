@@ -59,7 +59,7 @@ useEffect(function(){
 
 return (
   <Swiper  
-    loop={categories.length > 6} // Prevents Swiper layout glitches if categories are few
+    loop={categories.length > 6} 
     modules={[Autoplay]} 
     autoplay={{
       delay: 2500,

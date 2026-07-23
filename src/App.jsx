@@ -19,6 +19,9 @@ import Loading from "./components/loading.jsx";
 import Checkout from "./pages/checkout.jsx";
 import Profile from "./pages/profile.jsx";
 import OrderPlaced from "./pages/OrderPlaced.jsx";
+import DashBoard from "./pages/DashBoard.jsx";
+import CartMangement from "./pages/CartMangement.jsx";
+import Users from "./pages/Users.jsx";
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => 
@@ -93,6 +96,9 @@ export default function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/orderPlaced" element={<OrderPlaced />} />
+            <Route path="/DashBoard" element={<DashBoard />} />
+            <Route path="/CartMangement" element={<CartMangement />} />
+            <Route path="/Users" element={<Users />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
             
