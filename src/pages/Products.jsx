@@ -245,28 +245,64 @@ export default function Products() {
                             </Col>
                         )}
                     </Row>
+{noPages > 1 && !categoryFilter && (
+    <div className="d-flex justify-content-center my-4">
+        <Pagination>
+            {/* First & Previous Buttons */}
+            <Pagination.First 
+                disabled={currentPage === 1}
+                onClick={() => setCurrentPage(1)} 
+            />
+            <Pagination.Prev 
+                disabled={currentPage === 1} 
+                onClick={() => setCurrentPage(prev => prev - 1)} 
+            />
 
-                    {noPages > 1 && !categoryFilter && (
-                        <div className="d-flex justify-content-center my-4">
-                            <Pagination>
-                                <Pagination.Prev 
-                                    disabled={currentPage === 1} 
-                                    onClick={() => setCurrentPage(prev => prev - 1)} 
-                                />
-                                {[...Array(noPages)].map((_, idx) => (
-                                    <Pagination.Item 
-                                        key={idx + 1} 
-                                        active={idx + 1 === currentPage} 
-                                        onClick={() => setCurrentPage(idx + 1)}
-                                    >
-                                        {idx + 1}
-                                    </Pagination.Item>
-                                ))}
-                                <Pagination.Next 
-                                    disabled={currentPage === noPages} 
-                                    onClick={() => setCurrentPage(prev => prev + 1)} 
-                                />
-                            </Pagination>
+            {/* Always show page 1 */}
+            {currentPage > 2 && (
+                <Pagination.Item onClick={() => setCurrentPage(1)}>1</Pagination.Item>
+            )}
+
+            {/* Show left ellipsis if far from start */}
+            {currentPage > 3 && <Pagination.Ellipsis disabled />}
+
+            {/* Dynamic middle pages (Shows current, previous, and next page) */}
+            {[...Array(noPages)].map((_, idx) => {
+                const page = idx + 1;
+                // Adjust this range condition to show more/fewer sibling pages
+                if (page >= currentPage - 1 && page <= currentPage + 1) {
+                    return (
+                        <Pagination.Item 
+                            key={page} 
+                            active={page === currentPage} 
+                            onClick={() => setCurrentPage(page)}
+                        >
+                            {page}
+                        </Pagination.Item>
+                    );
+                }
+                return null;
+            })}
+
+            {/* Show right ellipsis if far from end */}
+            {currentPage < noPages - 2 && <Pagination.Ellipsis disabled />}
+
+            {/* Always show last page */}
+            {currentPage < noPages - 1 && (
+                <Pagination.Item onClick={() => setCurrentPage(noPages)}>{noPages}</Pagination.Item>
+            )}
+
+            {/* Next & Last Buttons */}
+            <Pagination.Next 
+                disabled={currentPage === noPages} 
+                onClick={() => setCurrentPage(prev => prev + 1)} 
+                />
+            <Pagination.Last 
+                disabled={currentPage === noPages}
+                onClick={() => setCurrentPage(noPages)}
+            />
+        </Pagination>
+
                         </div>
                     )}
                 </Col>

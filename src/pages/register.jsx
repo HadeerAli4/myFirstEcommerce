@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { Form, FormControl } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { ADD_USER, API } from "../api/api";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { registerUserSuccess } from "../store/slices/userSlice";
-
 
 export default function Register() {
   const go = useNavigate();
@@ -16,12 +14,19 @@ export default function Register() {
     lastName: "",
     username: "",
     password: "",
-    city: ""
+    city: "",
+    image: null 
   });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value, files } = e.target;
+
+    if (name === "image") {
+      setFormData({ ...formData, image: files[0] });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -29,10 +34,24 @@ export default function Register() {
     setIsLoading(true);
 
     try {
-      const response = await API.post(ADD_USER, formData);
-      const user = response.data;
 
-       dispatch(registerUserSuccess(user)); 
+      const dataToSend = new FormData();
+      dataToSend.append("firstName", formData.firstName);
+      dataToSend.append("lastName", formData.lastName);
+      dataToSend.append("username", formData.username);
+      dataToSend.append("password", formData.password);
+      dataToSend.append("city", formData.city);
+      if (formData.image) {
+        dataToSend.append("image", formData.image);
+      }
+
+     
+      const response = await API.post(ADD_USER, dataToSend, {
+        headers: { "Content-Type": "multipart/form-data" }
+      });
+      
+      const user = response.data;
+      dispatch(registerUserSuccess(user)); 
       
       toast.success("Registration Successful!");
       go("/");
@@ -48,10 +67,11 @@ export default function Register() {
     <>
       <h2>Welcome to Register Page</h2>
       <br />
-      <Form className="row g-3" onSubmit={handleSubmit}>
+      <form className="row g-3" onSubmit={handleSubmit}>
         <div className="col-md-4">
-          <label className="form-label">First name</label>
+          <label htmlFor="firstName" className="form-label">First name</label>
           <input
+            id="firstName"
             type="text"
             className="form-control"
             name="firstName"
@@ -62,8 +82,9 @@ export default function Register() {
         </div>
 
         <div className="col-md-4">
-          <label className="form-label">Last name</label>
+          <label htmlFor="lastName" className="form-label">Last name</label>
           <input
+            id="lastName"
             type="text"
             className="form-control"
             name="lastName"
@@ -74,10 +95,11 @@ export default function Register() {
         </div>
 
         <div className="col-md-4">
-          <label className="form-label">Username</label>
+          <label htmlFor="username" className="form-label">Username</label>
           <div className="input-group">
             <span className="input-group-text">@</span>
             <input
+              id="username"
               type="text"
               className="form-control"
               name="username"
@@ -89,10 +111,11 @@ export default function Register() {
         </div>
 
         <div className="col-md-4">
-          <label className="form-label">Password</label>
+          <label htmlFor="password" className="form-label">Password</label>
           <div className="input-group">
             <span className="input-group-text">🔒</span>
             <input
+              id="password"
               type="password"
               className="form-control"
               name="password"
@@ -104,8 +127,9 @@ export default function Register() {
         </div>
 
         <div className="col-md-6">
-          <label className="form-label">City</label>
+          <label htmlFor="city" className="form-label">City</label>
           <input
+            id="city"
             type="text"
             className="form-control"
             name="city"
@@ -116,7 +140,15 @@ export default function Register() {
         </div>
 
         <div className="col-md-12">
-          <FormControl type="file" accept="image/*" />
+          <label htmlFor="image" className="form-label">Profile Image</label>
+          <input 
+            id="image"
+            type="file" 
+            className="form-control" 
+            name="image" 
+            accept="image/*" 
+            onChange={handleChange}
+          />
         </div>
 
         <div className="col-12">
@@ -125,8 +157,7 @@ export default function Register() {
           </button>
           <Link to="/" className="btn btn-link ms-2">Already have an account?</Link>
         </div>
-      </Form>
-
+      </form>
     </>
   );
 }

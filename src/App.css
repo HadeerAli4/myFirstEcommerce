@@ -4,17 +4,33 @@
 }
 
 [data-bs-theme="dark"] {
-  --bs-body-bg: #1a1a2e;
+  --bs-body-bg: #8d8da0;
   --bs-body-color: #e0e0e0;
 }
 
 [data-bs-theme="dark"] .bg-light {
-  background-color: #2d2d44 !important;
+  background-color: #d4d4ef !important;
+    color: #e0e0e0;
 }
-
-[data-bs-theme="dark"] .card {
-  background-color: #252538;
+[data-bs-theme="dark"] .ProductsContainer {
+  background-color: #71717c;
   border-color: #3a3a52;
+  color: #e0e0e0;
+}
+[data-bs-theme="dark"] .card {
+  background-color: #503a4d;
+  border-color: #3a3a52;
+  color: #e0e0e0;
+}
+[data-bs-theme="dark"] .navbar {
+  background-color: #71717c;
+  border-color: #3a3a52;
+  color: #e0e0e0;
+}
+[data-bs-theme="dark"] .home {
+  background-color: #71717c;
+  border-color: #3a3a52;
+  color: #e0e0e0;
 }
 
 [data-bs-theme="dark"] .form-control {
