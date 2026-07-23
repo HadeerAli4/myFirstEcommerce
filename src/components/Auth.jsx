@@ -14,7 +14,7 @@ export function Auth(){
         {! isLoggedIn ? (<>
         
         <Button variant="outline-primary" as={Link} to="/Login"> Login </Button>
-        <Button variant="success" as={Link} to="/register"> Register </Button>
+        <Button variant="success" as={Link} to="/hadeer-test"> Register </Button>
         </>) : (
         <Button variant="outline-danger" onClick={() => {
             
