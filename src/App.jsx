@@ -99,6 +99,7 @@ export default function App() {
             <Route path="/DashBoard" element={<DashBoard />} />
             <Route path="/CartMangement" element={<CartMangement />} />
             <Route path="/Users" element={<Users />} />
+            <Route path="/test" element={<h1>Test Page</h1>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
             
